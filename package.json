@@ -1,0 +1,25 @@
+{
+  "name": "clean-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barisdilekci/clean-blog-node.git"
+  },
+  "author": "Baris Dilekci",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barisdilekci/clean-blog-node/issues"
+  },
+  "homepage": "https://github.com/barisdilekci/clean-blog-node#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
