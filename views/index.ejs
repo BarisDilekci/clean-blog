@@ -2,7 +2,7 @@
 
 <body>
 
-
+  <!-- Navigation -->
   <%- include('partials/_nav') %>
 
   <!-- Page Header -->
@@ -24,25 +24,22 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-
-        <% for (let i =0; i < blogs.length; i++) { %>
-
+        <% for(let i = 0; i < blog.length; i++) { %>
         <div class="post-preview">
-          <a href="/blogs/<%= blogs[i]._id %>">
+          <a href="/post/<%= blog[i]._id %>">
             <h2 class="post-title">
-              <%= blogs[i].title %>
+              <%= blog[i].title %>
             </h2>
             <h3 class="post-subtitle">
-              <%= blogs[i].detail %>
+              <%= blog[i].content %>
             </h3>
           </a>
           <p class="post-meta">Posted by
-            <a href="/posts/<%= blogs[i]._id %>"> <%= blogs[i].author %></a> <br>
-            <%= blogs[i].dateCreated %></p>
+            <a href="#"><%= blog[i].author %></a>
+            on <%= blog[i].date %></p>
         </div>
-        <hr>
         <% } %>
-
+        <hr>
         <!-- Pager -->
         <div class="clearfix">
           <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
@@ -50,11 +47,16 @@
       </div>
     </div>
   </div>
+  
+      </div>
+    </div>
+  </div>
 
   <hr>
 
   <%- include('partials/_footer') %>
-
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
 
 </body>
 
