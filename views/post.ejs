@@ -72,18 +72,17 @@
   <div class="container mt-4">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="btn-container">
-          <form method="POST" action="/post/<%= mypost._id %>?_method=DELETE">
-            <button type="submit" class="btn btn-danger">DELETE</button>
-          </form>
-          <form method="POST" action="/post/edit/<%= mypost._id %>">
-            <button class="btn btn-primary">UPDATE</button>
+        <div class="btn-container d-flex justify-content-between">
+          <a href="/post/<%= mypost._id %>?_method=DELETE" class="btn btn-danger rounded w-48"><span>Delete Post</span></a>
+          
+          <form method="POST" action="/post/edit/<%= mypost._id %>" class="w-48">
+            <button class="btn btn-primary w-100">UPDATE</button>
           </form>
         </div>
       </div>
     </div>
   </div>
-
+  
   <%- include('partials/_footer') -%>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

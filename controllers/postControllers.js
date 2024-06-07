@@ -1,9 +1,9 @@
 const Post = require('../models/Post');
 
 exports.getAllPost = async (req, res) => {
-  const posts = await Post.find({}).sort({ dateCreated: -1 });
+  const post = await Post.find({}).sort({ dateCreated: -1 });
   res.render('index', {
-    posts,
+    post,
   });
 };
 
@@ -13,19 +13,27 @@ exports.addPost = async (req, res) => {
 };
 
 exports.deletePost = async (req, res) => {
-  await Post.findOneAndRemove({ _id: req.params.id });
-  res.redirect('/');
+  await Post.findByIdAndDelete(req.params.id);
+  res.redirect("/");
 };
 
+
 exports.editPost = async (req, res) => {
-  console.log(req.body);
-  const mypost = await Post.findById(req.params.id);
-  console.log(mypost);
-  mypost.name = req.body.name;
-  mypost.message = req.body.message;
-  mypost.save();
-  res.redirect('/');
+  try {
+    const mypost = await Post.findById(req.params.id);
+    if (!mypost) {
+      return res.status(404).send("Post not found");
+    }
+    mypost.name = req.body.name;
+    mypost.message = req.body.message;
+    await mypost.save();
+    res.redirect('/');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server error");
+  }
 };
+
 
 exports.updatePost = async (req, res) => {
   const mypost = await Post.findById(req.params.id);
