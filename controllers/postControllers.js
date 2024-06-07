@@ -26,3 +26,11 @@ exports.editPost = async (req, res) => {
   mypost.save();
   res.redirect('/');
 };
+
+exports.updatePost = async (req, res) => {
+  const mypost = await Post.findById(req.params.id);
+  mypost.name = req.body.name;
+  mypost.message = req.body.message;
+  mypost.save();
+  res.redirect(`/`);
+};

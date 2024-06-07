@@ -1,4 +1,70 @@
-<%- include('partials/_header') -%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('partials/_header') -%>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .masthead {
+      text-align: center;
+      padding: 100px 0;
+      background-image: url('img/home-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .masthead .site-heading {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .post-preview {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .post-title {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .post-subtitle {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: #6c757d;
+    }
+
+    .post-meta {
+      font-size: 0.9em;
+      color: #6c757d;
+    }
+
+    .btn-primary {
+      border-radius: 5px;
+      padding: 10px 20px;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    .clearfix {
+      margin-top: 20px;
+    }
+  </style>
+</head>
 
 <body>
 
@@ -23,9 +89,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        
-        <% for(let i= 0; i< posts.length; i++) { %>
-
+        <% for(let i = 0; i < posts.length; i++) { %>
         <div class="post-preview">
           <a href="/myposts/<%= posts[i]._id %>">
             <h2 class="post-title">
@@ -39,8 +103,6 @@
             <%= posts[i].dateCreated %>
           </p>
         </div>
-        <hr>
-
         <% } %>
 
         <!-- Pager -->
@@ -54,6 +116,12 @@
   <hr>
 
   <%- include('partials/_footer') -%>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
   <!-- Custom scripts for this template -->
   <script src="js/clean-blog.min.js"></script>
 
