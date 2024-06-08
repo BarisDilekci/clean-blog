@@ -1,10 +1,24 @@
 const Post = require('../models/Post');
 
 exports.getAllPost = async (req, res) => {
-  const post = await Post.find({}).sort({ dateCreated: -1 });
-  res.render('index', {
-    post,
-  });
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const postPerPage = 3;
+    const totalPost = await Post.countDocuments(); // countDocuments() fonksiyonunu çağırmanız gerekiyor
+    const post = await Post.find({})
+      .sort({ dateCreated: -1 }) // en son gönderiyi en üste getirmek için -1
+      .skip((page - 1) * postPerPage)
+      .limit(postPerPage);
+
+    res.render('index', {
+      post: post,
+      current: page,
+      pages: Math.ceil(totalPost / postPerPage)
+    });
+  } catch (err) {
+    console.error('Error fetching posts:', err);
+    res.status(500).send('Internal Server Error');
+  }
 };
 
 exports.addPost = async (req, res) => {

@@ -63,6 +63,11 @@
     .clearfix {
       margin-top: 20px;
     }
+
+    .nav-item.active .nav-link {
+      background-color: #007bff;
+      color: #fff !important;
+    }
   </style>
 </head>
 
@@ -107,7 +112,20 @@
 
         <!-- Pager -->
         <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+          <% if (pages > 0) { %>
+            <ul class="nav tm-paging-links">
+              <% for (let i = 1; i <= pages; i++) { %>
+                <% if (i == current) { %>
+                  <li class="nav-item active"><a href="/?page=<%= i %>" class="nav-link tm-paging-link"><%= i %></a></li>
+                <% } else { %>
+                  <li class="nav-item"><a href="/?page=<%= i %>" class="nav-link tm-paging-link"><%= i %></a></li>
+                <% } %>
+              <% } %>
+              <% if (current < pages) { %>
+                <li class="nav-item"><a href="/?page=<%= current + 1 %>" class="nav-link tm-paging-link">&gt;</a></li>
+              <% } %>
+            </ul>
+          <% } %>
         </div>
       </div>
     </div>
