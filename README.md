@@ -1,4 +1,4 @@
-# clean-blog-node
+# clean-blog
 
 ## Steps to Run the Project
 
@@ -33,4 +33,4 @@ cd clean-blog
 
 
 
-6. Open your web browser and go to [localhost:3001](http://localhost:3000).
+6. Open your web browser and go to [localhost:3000](http://localhost:3000).
