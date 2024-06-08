@@ -4,9 +4,10 @@ exports.getAllPost = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const postPerPage = 3;
-    const totalPost = await Post.countDocuments(); // countDocuments() fonksiyonunu çağırmanız gerekiyor
+    const totalPost = await Post.countDocuments();
+
     const post = await Post.find({})
-      .sort({ dateCreated: -1 }) // en son gönderiyi en üste getirmek için -1
+      .sort({ dateCreated: -1 })
       .skip((page - 1) * postPerPage)
       .limit(postPerPage);
 
@@ -15,11 +16,12 @@ exports.getAllPost = async (req, res) => {
       current: page,
       pages: Math.ceil(totalPost / postPerPage)
     });
-  } catch (err) {
-    console.error('Error fetching posts:', err);
+  } catch (error) {
+    console.error('Error fetching posts:', error);
     res.status(500).send('Internal Server Error');
   }
 };
+
 
 exports.addPost = async (req, res) => {
   await Post.create(req.body);
