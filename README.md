@@ -5,7 +5,7 @@
 1. Clone Github Repo:
 
  ```bash
-git clone https://github.com/kullaniciadi/clean-blog.git
+git clone https://github.com/BarisDilekci/clean-blog.git
 cd clean-blog
 ```
 
